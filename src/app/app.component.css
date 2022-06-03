@@ -1,0 +1,13 @@
+.main-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.ul-div{
+    display: flex;
+    list-style: none;
+}
+.ul-div>li{
+    padding: 5px;
+}

@@ -1,0 +1,42 @@
+<mat-card style="width: 200;">
+<form class="example-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div mat-dialog-title class="dialog-title">
+        <h2>Edit Contact</h2>
+        <button mat-icon-button aria-label="close dialog" mat-dialog-close>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div><br><br>
+      
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" matInput placeholder="First name" value={{data.firstName}}>
+    </mat-form-field>
+    <br><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" matInput placeholder="Last name" value={{data.lastName}}>
+    </mat-form-field>
+    <br><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input formControlName="description" matInput placeholder="Description" value={{data.description}}>
+    </mat-form-field>
+    <br><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Email" value={{data.email}}>
+    </mat-form-field>
+    <br><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Phone</mat-label><br>
+        <input formControlName="phone" matInput placeholder="Phone" value={{data.phone}}>
+    </mat-form-field>
+    <br><br>
+    <div class="button-row">
+        
+        <button  mat-dialog-close class="btn btn-secondary">Close</button> 
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+
+</form>
+</mat-card>

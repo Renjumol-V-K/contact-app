@@ -1,0 +1,42 @@
+<div class="main-div">
+    <h1 style="text-align: center;">Add Contact</h1>
+    <div class="container-fluid">
+        <form [formGroup]="addContactForm" (ngSubmit)="onSubmit()">
+            <label for="">First Name:</label>
+            <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"
+                [ngClass]="{'is-invalid':submit&&f.firstName.errors}" [(ngModel)]="data.firstName">
+            <div *ngIf='submit&&f.firstName.errors' class="invalid-feedback">
+                <div *ngIf='f.firstName.errors.required'>First name is required</div>
+            </div>
+
+            <label for="">Last Name:</label>
+            <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName"
+                [(ngModel)]="data.lastName">
+
+
+            <label for="">Description:</label>
+            <input type="text" placeholder="Password" class="form-control" formControlName="description"
+                [(ngModel)]="data.description">
+
+            <label for="">Email:</label>
+            <input type="email" placeholder="Email" class="form-control" formControlName="email"
+                [ngClass]="{'is-invalid':submit&&f.email.errors}" [(ngModel)]="data.email">
+            <div *ngIf='submit&&f.email.errors' class="invalid-feedback">
+                <div *ngIf='f.email.errors.required'>Email is required</div>
+                <div *ngIf='f.email.errors.email'>Invalid email</div>
+            </div>
+
+            <label for="">Phone:</label>
+            <input type="text" placeholder="Phone" class="form-control" formControlName="phone"
+                [ngClass]="{'is-invalid':submit&&f.phone.errors}" [(ngModel)]="data.phone">
+            <div *ngIf='submit&&f.phone.errors' class="invalid-feedback">
+                <div *ngIf='f.phone.errors.required'>Phone number is required</div>
+                <div *ngIf='f.phone.errors.pattern'>Invalid Phone number</div>
+            </div>
+
+            <br><br>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>
