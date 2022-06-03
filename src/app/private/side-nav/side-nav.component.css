@@ -1,5 +1,5 @@
 .sidenav{
-    background:black; 
+    background:#1D5C63; 
     /* background: linear-gradient(0deg,black 0,gray 100%); */
     height:100%;
     width: 230px;
@@ -8,6 +8,7 @@
     margin-right: 15;
     border-radius: 5;
     transition: .5s cubic-bezier(.685,.0473,.346,1);
+    margin-bottom: 0px;
 }
  .logo{
      position: relative;
@@ -52,7 +53,7 @@
      overflow: hidden;
  }
  .logo-img img{
-     width: 35px;
+     width: 10px;
  }
  .nav li>a{
      margin: 10px 15px 0;
@@ -89,4 +90,7 @@
      background: #fff;
      border-radius: 50%;
      
+ }
+ .ul{
+    list-style: none; 
  }

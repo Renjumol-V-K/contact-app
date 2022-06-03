@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegistrationService } from 'src/registration.service';
 @Component({
   selector: 'app-signup',
@@ -10,7 +11,7 @@ export class SignupComponent implements OnInit {
   
   ngOnInit(): void {
   }
-  constructor(private fb:FormBuilder,private userService:RegistrationService){}
+  constructor(private fb:FormBuilder,private userService:RegistrationService,private router:Router){}
   registrationForm= this.fb.group({
     firstName:['',Validators.required],
     lastName:['',Validators.required],
@@ -40,5 +41,6 @@ export class SignupComponent implements OnInit {
       
     });
     this.showMsg= true;
+    this.router.navigate(['/login'])
   }
 }

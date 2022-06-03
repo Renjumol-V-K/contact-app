@@ -22,3 +22,9 @@ dialogConfig.position  {
   .example-sidenav {
     padding: 20px;
   }
+  .logo-img{
+    width: 10px;
+  }
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }

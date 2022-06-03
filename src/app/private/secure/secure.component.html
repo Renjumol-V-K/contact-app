@@ -1,13 +1,38 @@
-   <app-tool-bar></app-tool-bar>
-    <mat-sidenav-container>
-      <mat-sidenav #sideNav mode="side" opened>
-        <app-side-nav >
-        </app-side-nav>
-      </mat-sidenav>
-      <mat-sidenav-content> 
-        <router-outlet></router-outlet>    
-  <div>
-    <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+<!-- <app-tool-bar></app-tool-bar> -->
+
+<div>
+  <mat-toolbar>
+    <div style="background-color:#1D5C63;width: 100%;color: white;">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      Contact App
+      <span></span>
+      <span class="example-spacer"></span>
+      <!-- <div class="button-row"> -->
+        
+      <!-- </div> -->
+      <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon style="margin-left: 1150px;">person</mat-icon>
+      </button> -->
+      <a mat-flat-button color="primary" style="background-color: #1D5C63;margin-left: 1200px;" (click)="logout()">
+        <mat-icon>logout</mat-icon>Logout
+      </a>
+      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button> -->
+    </div>
+  </mat-toolbar>
+</div>
+<mat-sidenav-container class="container-fluid" style="height: 90%">
+  <mat-sidenav #sideNav mode="side" opened>
+    <app-side-nav>
+    </app-side-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+    <div>
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -24,10 +49,10 @@
       <span>Home</span>
     </button>
   </mat-menu> -->
-    <!--<mat-card class="example-card">
+      <!--<mat-card class="example-card">
   <h4>{{message}}</h4>
 </mat-card>-->
-    <!-- <mat-sidenav-container>
+      <!-- <mat-sidenav-container>
   <mat-sidenav #sideNav mode="side" opened>
      <app-side-nav >
     </app-side-nav> 
@@ -37,111 +62,144 @@
   </mat-sidenav-content>
 </mat-sidenav-container> 
   <router-outlet></router-outlet>  -->
-    <div>
-      <form>
-        <table style="width:80%">
-          <tr>
+  <!-- example expansion -->
+  <h1 style="color: #1D5C63;text-align: center;">Contacts</h1>
+  
+  <mat-accordion *ngFor="let contact of contacts">
+   
+    <mat-expansion-panel  style="width: 500px;margin-left: 350px;">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon style="color: #1D5C63;">person</mat-icon>
+        </mat-panel-title>
+        <mat-panel-description style="color: black;">
+          {{contact.firstName}} {{contact.lastName}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+     <p > {{contact.description}}</p>
+     <p>   {{contact.phone}}</p>
+     <p>   {{contact.email}} </p>
+     <p><button mat-raised-button  style="background-color:#1D5C63 ;outline: none;" data-toggle="modal" data-target="#exampleModal"
+      (click)="edit(contact)">
+      <mat-icon style="color:white ;"> edit</mat-icon>
+    </button><button mat-raised-button (click)="deleteContact(contact)" style="background-color: #1D5C63;margin-left: 10px;">
+      <mat-icon style="color: white;">delete</mat-icon>
+    </button> </p>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+  <!-- end of expansion -->
+      <!-- <div>
+        <form>
+          <table style="width:80%"> -->
+            <!-- <tr>
 
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Description</th>
-            <th>Phone</th>
-            <th>Email</th>
-          </tr>
-          <tr *ngFor="let contact of contacts">
-            <td>{{contact.firstName}}</td>
-            <td>{{contact.lastName}}</td>
-            <td>{{contact.description}}</td>
-            <td>{{contact.phone}}</td>
-            <td>{{contact.email}}</td>
-            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-                (click)="edit(contact)">
-                <mat-icon>edit</mat-icon>
-              </button></td>
-            <!-- </button> -->
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Description</th>
+              <th>Phone</th>
+              <th>Email</th>
+            </tr> -->
+            <!-- <tr *ngFor="let contact of contacts">
+              <td>{{contact.firstName}}</td>
+              <td>{{contact.lastName}}</td>
+              <td>{{contact.description}}</td>
+              <td>{{contact.phone}}</td>
+              <td>{{contact.email}}</td>
+              <td><button type="button" style="background-color: #1D5C63;" data-toggle="modal" data-target="#exampleModal"
+                  (click)="edit(contact)">
+                  <mat-icon style="color: white;"> edit</mat-icon <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
 
-            <!--<td><button (click)="edit()" style="border: 0;" class="btn btn-primary"><mat-icon>edit</mat-icon></button></td>  
+              <!--<td><button (click)="edit()" style="border: 0;" class="btn btn-primary"><mat-icon>edit</mat-icon></button></td>  
         <td><button (click)="delete()" style="border: 0;" class="btn btn-danger"> <mat-icon>delete</mat-icon></button></td> -->
-            <td><button mat-raised-button (click)="deleteContact(contact)" class="btn btn-danger">
-                <mat-icon>delete</mat-icon>
-              </button></td>
-          </tr>
-        </table>
-      </form>
+              <!-- <td><button mat-raised-button (click)="deleteContact(contact)" style="background-color: #1D5C63;">
+                  <mat-icon style="color: white;">delete</mat-icon>
+                </button></td>
+            </tr>
+          </table>
+        </form> -->
 
-      <!-- Button trigger modal -->
-      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button> -->
 
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                <h1>Edit Contact</h1>
-              </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  <h1>Edit Contact</h1>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
 
-              <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-                <input type="hidden" class="form-control" formControlName="cid" value="">
-                <label for="">First Name:</label>
-                <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"
-                  [ngClass]="{'is-invalid':submit&&f.firstName.errors}" [(ngModel)]="data.firstName">
-                <div *ngIf='submit&&f.firstName.errors' class="invalid-feedback">
-                  <div *ngIf='f.firstName.errors.required'>First name is required</div>
-                </div>
+                <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                  <input type="hidden" class="form-control" formControlName="cid" value="">
+                  <label for="">First Name:</label>
+                  <input type="text" placeholder="First Name" class="form-control" formControlName="firstName"
+                    [ngClass]="{'is-invalid':submit&&f.firstName.errors}" [(ngModel)]="data.firstName">
+                  <div *ngIf='submit&&f.firstName.errors' class="invalid-feedback">
+                    <div *ngIf='f.firstName.errors.required'>First name is required</div>
+                  </div>
 
-                <label for="">Last Name:</label>
-                <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName"
-                  [(ngModel)]="data.lastName">
-
-
-                <label for="">Description:</label>
-                <input type="text" placeholder="Password" class="form-control" formControlName="description"
-                  [(ngModel)]="data.description">
-
-                <label for="">Email:</label>
-                <input type="email" placeholder="Email" class="form-control" formControlName="email"
-                  [ngClass]="{'is-invalid':submit&&f.email.errors}" [(ngModel)]="data.email">
-                <div *ngIf='submit&&f.email.errors' class="invalid-feedback">
-                  <div *ngIf='f.email.errors.required'>Email is required</div>
-                  <div *ngIf='f.email.errors.email'>Invalid email</div>
-                </div>
-
-                <label for="">Phone:</label>
-                <input type="text" placeholder="Phone" class="form-control" formControlName="phone"
-                  [ngClass]="{'is-invalid':submit&&f.phone.errors}" [(ngModel)]="data.phone">
-                <div *ngIf='submit&&f.phone.errors' class="invalid-feedback">
-                  <div *ngIf='f.phone.errors.required'>Phone number is required</div>
-                  <div *ngIf='f.phone.errors.pattern'>Invalid Phone number</div>
-                </div>
+                  <label for="">Last Name:</label>
+                  <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName"
+                    [(ngModel)]="data.lastName">
 
 
-              </form>
+                  <label for="">Description:</label>
+                  <input type="text" placeholder="Password" class="form-control" formControlName="description"
+                    [(ngModel)]="data.description">
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+                  <label for="">Email:</label>
+                  <input type="email" placeholder="Email" class="form-control" formControlName="email"
+                    [ngClass]="{'is-invalid':submit&&f.email.errors}" [(ngModel)]="data.email">
+                  <div *ngIf='submit&&f.email.errors' class="invalid-feedback">
+                    <div *ngIf='f.email.errors.required'>Email is required</div>
+                    <div *ngIf='f.email.errors.email'>Invalid email</div>
+                  </div>
+
+                  <label for="">Phone:</label>
+                  <input type="text" placeholder="Phone" class="form-control" formControlName="phone"
+                    [ngClass]="{'is-invalid':submit&&f.phone.errors}" [(ngModel)]="data.phone">
+                  <div *ngIf='submit&&f.phone.errors' class="invalid-feedback">
+                    <div *ngIf='f.phone.errors.required'>Phone number is required</div>
+                    <div *ngIf='f.phone.errors.pattern'>Invalid Phone number</div>
+                  </div>
+
+
+                </form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()">Save changes</button>
+              </div>
             </div>
           </div>
         </div>
+        <!-- <div class="button-row">
+          <a mat-flat-button color="primary" style="background-color: #1D5C63;" (click)="logout()">
+            <mat-icon>logout</mat-icon>Logout
+          </a>
+        </div> -->
       </div>
-      <div class="button-row">
-        <a mat-flat-button color="primary" (click)="logout()">
-          <mat-icon>logout</mat-icon>Logout
-        </a>
-      </div>
-    </div>
- 
 
-</div>
-</mat-sidenav-content>   
+
+    
+  </mat-sidenav-content>
 </mat-sidenav-container>

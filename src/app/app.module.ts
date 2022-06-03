@@ -31,6 +31,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ProfileComponent } from './private/secure/profile/profile.component';
 import { SideNavComponent } from './private/side-nav/side-nav.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatFormFieldModule,
     MatDialogModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [
     {

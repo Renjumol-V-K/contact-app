@@ -24,7 +24,8 @@ const routes: Routes = [
   {path:'edit-contact',canActivate:[AuthGuard],component:EditContactComponent},
   {path:'delete-contact',canActivate:[AuthGuard],component:DeleteContactComponent},
   { path:'edit/:id',canActivate:[AuthGuard] ,component: SecureComponent },
-  {path:'profile',canActivate:[AuthGuard],component:ProfileComponent}
+  {path:'profile',canActivate:[AuthGuard],component:ProfileComponent},
+  {path:'login',component:LoginComponent}
 ];
 
 @NgModule({
