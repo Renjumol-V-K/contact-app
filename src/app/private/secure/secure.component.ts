@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
 import { ContactService } from 'src/contact.service';
 import { OauthService } from '../../oauth.service';
 
@@ -12,7 +12,9 @@ import { OauthService } from '../../oauth.service';
 })
 
 export class SecureComponent implements OnInit {
+  @ViewChild(MatAccordion) accordion: MatAccordion; 
  
+
   message = ''
   isLoadingResults = false;
   public contacts: Array<any> = [  
@@ -95,4 +97,5 @@ onSubmit(){
   });
   }
   
+ 
 }

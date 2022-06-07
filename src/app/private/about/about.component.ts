@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { OauthService } from 'src/app/oauth.service';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,private authService: OauthService) { }
 
   ngOnInit(): void {
+  }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']).then(_ => console.log('Logout'));
   }
 
 }

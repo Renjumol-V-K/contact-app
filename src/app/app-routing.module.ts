@@ -10,6 +10,7 @@ import { EditContactComponent } from './private/secure/edit-contact/edit-contact
 import { ProfileComponent } from './private/secure/profile/profile.component';
 import { SecureComponent } from './private/secure/secure.component';
 import { SignupComponent } from './public/signup/signup.component';
+import { RegisterComponent } from './public/register/register.component';
 
 const routes: Routes = [
 
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path:'delete-contact',canActivate:[AuthGuard],component:DeleteContactComponent},
   { path:'edit/:id',canActivate:[AuthGuard] ,component: SecureComponent },
   {path:'profile',canActivate:[AuthGuard],component:ProfileComponent},
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
+  {path:'register',component:RegisterComponent}
 ];
 
 @NgModule({

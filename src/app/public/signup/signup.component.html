@@ -1,66 +1,70 @@
 <mat-card class="example-card" style="text-align: center;" style="width: 500px;margin-left: 500px;margin-top: 100px;">
-<div class="main-div">
-    <div class="div-log" style="background-color: #1D5C63;height: 50px;">
-        <h1 style="color: white; text-align: center;">Sign up</h1>
-      </div>
-    <div class="container-fluid">
-        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-            <br>
-            <mat-form-field class="example-full-width">
-            <label for="">First Name:</label>
-            <input type="text" placeholder="First Name" class="form-control" formControlName="firstName" 
-           [ngClass]="{'is-invalid':submit&&f.firstName.errors}" [(ngModel)]="data.firstName">
-            </mat-form-field>
-            <div *ngIf='submit&&f.firstName.errors' class="invalid-feedback">
-                <div *ngIf='f.firstName.errors.required'>First name is required</div>
-            </div><br>
-            <mat-form-field class="example-full-width">
-            <label for="">Last Name:</label>
-            <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName" 
-            [ngClass]="{'is-invalid':submit&&f.lastName.errors}" [(ngModel)]="data.lastName">
-            </mat-form-field>
-            <div *ngIf='submit&&f.lastName.errors' class="invalid-feedback">
-                <div *ngIf='f.lastName.errors.required'>Last name is required</div>
-            </div> <br>
-            <mat-form-field class="example-full-width">
-            <label for="">Phone:</label>
-            <input type="text" placeholder="Phone" class="form-control" formControlName="phone" 
-            [ngClass]="{'is-invalid':submit&&f.phone.errors}" [(ngModel)]="data.phone">
-            </mat-form-field>
-            <div *ngIf='submit&&f.phone.errors' class="invalid-feedback">
-                <div *ngIf='f.phone.errors.required'>Phone number is required</div>
-                <div *ngIf='f.phone.errors.pattern'>Invalid Phone number</div>
-            </div><br>
-            <mat-form-field class="example-full-width">
-            <label for="">Username:</label>
-            <input type="email" placeholder="Email" class="form-control" formControlName="username" 
-            [ngClass]="{'is-invalid':submit&&f.username.errors}" [(ngModel)]="data.username">
-            </mat-form-field>
-            <div *ngIf='submit&&f.username.errors' class="invalid-feedback">
-                <div *ngIf='f.username.errors.required'>Username is required</div>
-                <div *ngIf='f.username.errors.email'>Invalid username</div>
-            </div> <br>
-            <mat-form-field class="example-full-width">
-            <label for="">Password:</label>
-            <input type="password" placeholder="Password" class="form-control" formControlName="password" 
-            [ngClass]="{'is-invalid':submit&&f.password.errors}" [(ngModel)]="data.password">
-            </mat-form-field>
-            <div *ngIf='submit&&f.password.errors' class="invalid-feedback">
-                <div *ngIf='f.password.errors.required'>Password is required</div>
-                <div *ngIf='f.password.errors.pattern'>Invalid Password</div>
-            </div> 
-
-            <br><br>
-            <div class="row"  *ngIf="showMsg">
-                <div class="col-xs-12">
-                  <p class="alert alert-success">
-                      <strong>Registration Success!</strong>
-                  </p>
+    <div class="main-div">
+        <div class="div-log" style="background-color: #1D5C63;height: 50px;">
+            <h1 style="color: white; text-align: center;">Sign up</h1>
+          </div>
+        <!-- <div class="container-fluid"> -->
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <br>
+                <mat-form-field>
+                <label>
+                <input matInput placeHolder="First Name" class="form-control" formControlName="firstName" 
+               [ngClass]="{'is-invalid':submit&&f.firstName.errors}" [(ngModel)]="data.firstName">
+                
+                <div *ngIf='submit&&f.firstName.errors' class="invalid-feedback">
+                    <div *ngIf='f.firstName.errors.required'>First name is required</div>
                 </div>
-              </div>
-           
-           <button mat-flat-button style="background-color: #1D5C63;color: white;">Submit</button>
-        </form>
+            </label>
+            </mat-form-field><br>
+                <mat-form-field class="example-full-width">
+                <label for="">Last Name:</label>
+                <input type="text" placeholder="Last Name" class="form-control" formControlName="lastName" 
+                [ngClass]="{'is-invalid':submit&&f.lastName.errors}" [(ngModel)]="data.lastName">
+                </mat-form-field>
+                <div *ngIf='submit&&f.lastName.errors' class="invalid-feedback">
+                    <div *ngIf='f.lastName.errors.required'>Last name is required</div>
+                </div> <br>
+                <mat-form-field class="example-full-width">
+                <label for="">Phone:</label>
+                <input type="text" placeholder="Phone" class="form-control" formControlName="phone" 
+                [ngClass]="{'is-invalid':submit&&f.phone.errors}" [(ngModel)]="data.phone">
+                </mat-form-field>
+                <div *ngIf='submit&&f.phone.errors' class="invalid-feedback">
+                    <div *ngIf='f.phone.errors.required'>Phone number is required</div>
+                    <div *ngIf='f.phone.errors.pattern'>Invalid Phone number</div>
+                </div><br>
+                <mat-form-field class="example-full-width">
+                <label for="">Username:</label>
+                <input type="email" placeholder="Email" class="form-control" formControlName="username" 
+                [ngClass]="{'is-invalid':submit&&f.username.errors}" [(ngModel)]="data.username">
+               
+            </mat-form-field>
+
+                <div *ngIf='submit&&f.username.errors' class="invalid-feedback">
+                    <div *ngIf='f.username.errors.required'>Username is required</div>
+                    <div *ngIf='f.username.errors.email'>Invalid username</div>
+                </div> <br>
+                <mat-form-field class="example-full-width">
+                <label for="">Password:</label>
+                <input type="password" placeholder="Password" class="form-control" formControlName="password" 
+                [ngClass]="{'is-invalid':submit&&f.password.errors}" [(ngModel)]="data.password">
+                </mat-form-field>
+                <div *ngIf='submit&&f.password.errors' class="invalid-feedback">
+                    <div *ngIf='f.password.errors.required'>Password is required</div>
+                    <div *ngIf='f.password.errors.pattern'>Invalid Password</div>
+                </div> 
+    
+                <br><br>
+                <div class="row"  *ngIf="showMsg">
+                    <div class="col-xs-12">
+                      <p class="alert alert-success">
+                          <strong>Registration Success!</strong>
+                      </p>
+                    </div>
+                  </div>
+               
+               <button mat-flat-button style="background-color: #1D5C63;color: white;">Submit</button>
+            </form>
+        <!-- </div> -->
     </div>
-</div>
-</mat-card>
+    </mat-card>

@@ -1,1 +1,23 @@
-<div class=""></div>
+<div>
+    <mat-toolbar>
+      <div style="background-color:#1D5C63;width: 100%;color: white;">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        Contact App
+        <span></span>
+        <span class="example-spacer"></span>
+        <a mat-flat-button color="primary" style="background-color: #1D5C63;margin-left: 1200px;" (click)="logout()">
+          <mat-icon>logout</mat-icon>Logout
+        </a>
+      </div>
+    </mat-toolbar>
+  </div>
+  <mat-sidenav-container class="container-fluid" style="height: 90%">
+    <mat-sidenav #sideNav mode="side" opened>
+      <app-side-nav>
+      </app-side-nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+<div style="background-color: #1D5C63;color:white;"><h1>About</h1></div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OauthService } from 'src/app/oauth.service';
 import { ContactService } from 'src/contact.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AddContactComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  constructor(private fb:FormBuilder,private contactService:ContactService,private router:Router) { }
+  constructor(private fb:FormBuilder,private contactService:ContactService,private router:Router,private authService: OauthService) { }
   addContactForm= this.fb.group({
     firstName:['',Validators.required],
     lastName:[''],
@@ -46,5 +47,12 @@ export class AddContactComponent implements OnInit {
       console.log(res) 
       this.router.navigate(['/secure'])
     });
+  }
+  close(){
+    this.router.navigate(['/secure'])
+  }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']).then(_ => console.log('Logout'));
   }
 }

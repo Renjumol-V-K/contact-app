@@ -7,14 +7,14 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="div-log" style="background-color: #1D5C63;">
         <h1>Login</h1>
-      </div>
+      </div><br>
       <mat-form-field class="example-full-width">
         <label>
           <input matInput placeholder="Username" formControlName="username" [errorStateMatcher]="matcher">
         </label>
         <!-- <mat-error>
             <span *ngIf="!loginForm.get('username').valid && loginForm.get('username')?.touched">Please enter Username</span>
-          </mat-error>-->
+          </mat-error> -->
       </mat-form-field><br><br>
       <mat-form-field class="example-full-width">
         <label>
@@ -32,12 +32,13 @@
         </button>
         <!-- </div>
         <div class="button-row"> -->
-        <h4>Don't have an account?</h4>
-      </div>
-      <div class="button-row">
-        <a mat-flat-button style="background-color: #1D5C63;color:white;" [routerLink]="['/signup']">
-          <mat-icon>how_to_reg</mat-icon>Register
-        </a>
+        <h4>Don't have an account?
+      <!-- </div>
+      <div class="button-row"> -->
+        <a href="Register" [routerLink]="['/signup']">
+          <!-- <mat-icon>how_to_reg</mat-icon> -->
+          Register
+        </a></h4>
       </div>
     </form>
   </mat-card>

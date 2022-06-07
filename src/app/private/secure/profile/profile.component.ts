@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { OauthService } from 'src/app/oauth.service';
 
 
 export interface PeriodicElement {
@@ -29,9 +31,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ProfileComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  constructor(private authService: OauthService, 
+    private router: Router) { }
 
   ngOnInit(): void {
+  }
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']).then(_ => console.log('Logout'));
   }
 
 }
